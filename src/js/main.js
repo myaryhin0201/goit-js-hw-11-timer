@@ -11,7 +11,7 @@ class CountdownTimer {
     this.template = `
     <div class="flex">
     <div class="field">
-      <span class="value time" data-value="days">00</span>
+      <span class="value time" data-value="days">000</span>
       <span class="label text">Days</span>
     </div>
 
@@ -76,11 +76,11 @@ class CountdownTimer {
     buttonRefs.reset.setAttribute('disabled', true);
     clearInterval(this.intervalId);
     this.timerIsActive = false;
-    this.refs.days.textContent = "00";
+    this.refs.days.textContent = "000";
     this.refs.hours.textContent = "00";
     this.refs.mins.textContent = "00";
     this.refs.secs.textContent = "00";
-    this.refs.ms.textContent = "00";
+    this.refs.ms.textContent = "000";
   }
     updateClock(time) {
       const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)),3);
