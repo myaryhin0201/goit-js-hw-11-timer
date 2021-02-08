@@ -1,3 +1,4 @@
+import itemsTemplate from '../templates/timer.hbs';
 const buttonRefs = {
   start: document.querySelector(`[data-action="start"]`),
   stop: document.querySelector(`[data-action="stop"]`),
@@ -8,33 +9,10 @@ buttonRefs.reset.setAttribute('disabled', true);
 class CountdownTimer {
   constructor({ selector, targetDate }) {
     this.targetDate = targetDate;
-    this.template = `
-    <div class="flex">
-    <div class="field">
-      <span class="value time" data-value="days">000</span>
-      <span class="label text">Days</span>
-    </div>
-
-    <div class="field">
-      <span class="value time" data-value="hours">00</span>
-      <span class="label text">Hours</span>
-    </div>
-  
-    <div class="field">
-      <span class="value time" data-value="mins">00</span>
-      <span class="label text">Min</span>
-    </div>
-  
-    <div class="field">
-      <span class="value time" data-value="secs">00</span>
-      <span class="label text">Sec</span></div>
-      <div class="field">
-      <span class="value time" data-value="ms">000</span>
-      <span class="label text">MS</span></div>
-      </div>`;
     this.selector = selector;
     this.root = document.querySelector(this.selector);
-    this.root.insertAdjacentHTML(`beforeend`, this.template);
+    this.markup = itemsTemplate();
+    this.root.insertAdjacentHTML(`beforeend`,  this.markup);
     this.refs = {
     days: this.root.querySelector('[data-value="days"]'),
     hours: this.root.querySelector('[data-value="hours"]'),
